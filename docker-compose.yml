@@ -1,0 +1,28 @@
+version: "3"
+services:
+  postgres2:
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgres2
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=postgresql2
+    restart: unless-stopped
+  #   APP*****************************************
+  mysql_db2:
+    image: mysql:latest
+    network_mode: bridge
+    container_name: mysql2
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: mysql2
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
